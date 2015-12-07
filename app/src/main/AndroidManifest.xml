@@ -33,6 +33,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="johnkagga.me.location.MainActivity"/>
         </activity>
+        <activity
+            android:name=".ActivityRecognition"
+            android:label="@string/title_activity_activity_recognition"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="johnkagga.me.location.MainActivity"/>
+        </activity>
     </application>
 
 </manifest>
