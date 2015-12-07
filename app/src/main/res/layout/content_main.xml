@@ -14,19 +14,53 @@
     tools:context="johnkagga.me.location.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
-        android:id="@+id/textViewLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Location goes here"/>
-
-    <TextView
-        android:id="@+id/textViewlongitude"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Latitude"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/textViewLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location goes here"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Longitude"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/textViewlongitude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text = "Longitude value"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textviewTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location Two"
+        android:id="@+id/locationTwo"
+        android:onClick="toLocationTwo"
+        android:layout_gravity="center_horizontal"/>
 </LinearLayout>

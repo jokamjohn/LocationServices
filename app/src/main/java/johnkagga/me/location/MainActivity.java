@@ -1,10 +1,13 @@
 package johnkagga.me.location;
 
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -26,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     private TextView mTimeTextview;
     private TextView mLongTextview;
     private String mLastUpdatedTime;
+    private Button mLocationTwoButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +38,22 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        buildGoogleClientApi();
+
+        initializeScreen();
+
+    }
+
+    /**
+     * Build the Api client with the callbacks
+     * and add the location service Apis
+     */
+    protected void buildGoogleClientApi() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(LocationServices.API)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .build();
-
-        initializeScreen();
-
     }
 
     /**
@@ -51,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         mTextView = (TextView) findViewById(R.id.textViewLocation);
         mTimeTextview = (TextView) findViewById(R.id.textviewTime);
         mLongTextview = (TextView) findViewById(R.id.textViewlongitude);
+        mLocationTwoButton = (Button) findViewById(R.id.locationTwo);
     }
 
     @Override
@@ -63,7 +76,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     @Override
     protected void onStop() {
         //Disconnect the client
-        mGoogleApiClient.disconnect();
+        if (mGoogleApiClient.isConnected()) {
+            mGoogleApiClient.disconnect();
+        }
         super.onStop();
     }
 
@@ -82,12 +97,12 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         mLocationRequest.setInterval(1000);//Update every second
 
         LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient,
-                mLocationRequest,this);
+                mLocationRequest, this);
     }
 
     @Override
     public void onConnectionSuspended(int i) {
-        Log.i(LOG_TAG,"Connection suspended");
+        Log.i(LOG_TAG, "Connection suspended");
     }
 
     @Override
@@ -113,4 +128,16 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         mLongTextview.setText(String.valueOf(location.getLongitude()));
         mTimeTextview.setText(mLastUpdatedTime);
     }
+
+    /**
+     * Launch Activity two
+     * @param view
+     */
+    public void toLocationTwo(View view)
+    {
+        Intent intent = new Intent(this,LocationTwo.class);
+        startActivity(intent);
+    }
+
+
 }
