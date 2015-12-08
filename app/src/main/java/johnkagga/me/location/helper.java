@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 
 import com.google.android.gms.location.DetectedActivity;
+import com.google.android.gms.location.GeofenceStatusCodes;
 
 
 /**
@@ -42,5 +43,28 @@ public class helper {
                 return resources.getString(R.string.unidentifiable_activity);
 
         }
+    }
+
+    /**
+     * Get a human readable error string according to the status code
+     * @param mContext Context
+     * @param statusCode Status code from the GeoFence Api
+     * @return Status code string
+     */
+    public static String getErrorString (Context mContext, int statusCode)
+    {
+        Resources resources = mContext.getResources();
+        switch (statusCode)
+        {
+            case GeofenceStatusCodes.GEOFENCE_NOT_AVAILABLE:
+                return resources.getString(R.string.geo_fence_not_available);
+            case GeofenceStatusCodes.GEOFENCE_TOO_MANY_GEOFENCES:
+                return resources.getString(R.string.geo_fence_too_many);
+            case GeofenceStatusCodes.GEOFENCE_TOO_MANY_PENDING_INTENTS:
+                return resources.getString(R.string.geo_fence_too_many_pending_intents);
+            default:
+                return resources.getString(R.string.geo_fence_unknown_error);
+        }
+
     }
 }

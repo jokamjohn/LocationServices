@@ -133,7 +133,7 @@ public class RecognitionActivity extends AppCompatActivity implements GoogleApiC
             return;
         }
         ActivityRecognition.ActivityRecognitionApi
-                .requestActivityUpdates(mGoogleApiClient,1000, getPendingIntent())
+                .requestActivityUpdates(mGoogleApiClient,Constants.BROADCAST_INTERVAL, getPendingIntent())
                 .setResultCallback(this);
 
         mRequestButton.setEnabled(false);
@@ -199,7 +199,7 @@ public class RecognitionActivity extends AppCompatActivity implements GoogleApiC
             for (DetectedActivity thisActivity : detectedActivities)
             {
                 status += helper.getActivityString(context,thisActivity.getType())
-                        +thisActivity.getConfidence() + "\n";
+                        + " " + thisActivity.getConfidence() + "\n";
             }
             mStatusTextView.setText(status);
 

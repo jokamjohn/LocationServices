@@ -16,4 +16,10 @@
     <string name="walking">Walking</string>
     <string name="unidentifiable_activity">Unidentifiable activity: %1$d</string>
     <string name="not_connected">GoogleApiClient not yet connected. Try again.</string>
+    <string name="title_activity_geo_fencing">GeoFencingActivity</string>
+    <string name="geo_fence_button_label">Add GeoFence</string>
+    <string name="geo_fence_not_available">Geo Fence not available now</string>
+    <string name="geo_fence_too_many">Your app has registered too many geoFences</string>
+    <string name="geo_fence_too_many_pending_intents">You have provided more than 5 different PendingIntents to the addGeofences(GoogleApiClient, GeofencingRequest, PendingIntent) call</string>
+    <string name="geo_fence_unknown_error">unknown error the geo service is not available</string>
 </resources>
