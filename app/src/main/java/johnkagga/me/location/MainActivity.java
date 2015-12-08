@@ -139,5 +139,13 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         startActivity(intent);
     }
 
-
+    /**
+     * Start Recognition activity
+     * @param view Button
+     */
+    public void toActivityRecognition(View view)
+    {
+        Intent intent = new Intent(this,RecognitionActivity.class);
+        startActivity(intent);
+    }
 }

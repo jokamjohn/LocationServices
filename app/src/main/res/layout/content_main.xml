@@ -63,4 +63,13 @@
         android:id="@+id/locationTwo"
         android:onClick="toLocationTwo"
         android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ActivityRecognition"
+        android:onClick="toActivityRecognition"
+        android:id="@+id/activityRecognitionButton"
+        android:layout_gravity="center_horizontal"/>
+
 </LinearLayout>
