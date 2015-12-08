@@ -26,4 +26,5 @@
     <string name="geo_transition_existed">You have existed</string>
     <string name="geo_fence_dwell">"You dwell in "</string>
     <string name="geo_transition_default">Unknown transition type</string>
+    <string name="geofence_transition_notification_text">Click notification to return to app</string>
 </resources>
