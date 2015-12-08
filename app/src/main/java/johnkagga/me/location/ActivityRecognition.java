@@ -3,7 +3,9 @@ package johnkagga.me.location;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -80,6 +82,21 @@ public class ActivityRecognition extends AppCompatActivity implements GoogleApiC
     protected void onStart() {
         super.onStart();
         mGoogleApiClient.connect();
+    }
+
+    @Override
+    protected void onPause() {
+        //Unregister the broadcast receiver
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mBroadcastReceiver);
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //Register the broadcast service with same intent filter as in the service class
+        LocalBroadcastManager.getInstance(this).registerReceiver(mBroadcastReceiver,
+                new IntentFilter(Constants.BROADCAST_ACTION));
     }
 
     @Override
