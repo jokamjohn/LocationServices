@@ -10,4 +10,6 @@ public class Constants {
     public static final String ACTIVITY_EXTRA = PACKAGE_NAME + ".ACTIVITY_EXTRA";
     public static final String SHARED_PREFERENCE_NAME = PACKAGE_NAME + ".SHARED_PREF_NAME";
 
+
+
 }

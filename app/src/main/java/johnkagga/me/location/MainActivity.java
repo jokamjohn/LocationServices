@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
      * Build the Api client with the callbacks
      * and add the location service Apis
      */
-    protected void buildGoogleClientApi() {
+    protected synchronized void buildGoogleClientApi() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(LocationServices.API)
                 .addConnectionCallbacks(this)
