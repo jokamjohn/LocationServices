@@ -39,8 +39,5 @@ public class DetectedActivitiesIntentService extends IntentService {
         //Sending the broadcast intent
         LocalBroadcastManager.getInstance(this).sendBroadcast(localIntent);
 
-
-
-
     }
 }

@@ -22,4 +22,8 @@
     <string name="geo_fence_too_many">Your app has registered too many geoFences</string>
     <string name="geo_fence_too_many_pending_intents">You have provided more than 5 different PendingIntents to the addGeofences(GoogleApiClient, GeofencingRequest, PendingIntent) call</string>
     <string name="geo_fence_unknown_error">unknown error the geo service is not available</string>
+    <string name="geo_transition_entered">You have entered</string>
+    <string name="geo_transition_existed">You have existed</string>
+    <string name="geo_fence_dwell">"You dwell in "</string>
+    <string name="geo_transition_default">Unknown transition type</string>
 </resources>

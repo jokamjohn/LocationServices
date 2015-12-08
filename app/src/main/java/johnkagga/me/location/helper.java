@@ -2,9 +2,14 @@ package johnkagga.me.location;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.text.TextUtils;
 
 import com.google.android.gms.location.DetectedActivity;
+import com.google.android.gms.location.Geofence;
 import com.google.android.gms.location.GeofenceStatusCodes;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -65,6 +70,56 @@ public class helper {
             default:
                 return resources.getString(R.string.geo_fence_unknown_error);
         }
+    }
+
+    /**
+     * Get a string for the transition int type
+     *
+     * @param mContext Context
+     * @param transitionType Int transition type
+     * @return Transition String
+     */
+    private static String getTransitionString(Context mContext, int transitionType)
+    {
+        Resources resources = mContext.getResources();
+
+        switch (transitionType)
+        {
+            case Geofence.GEOFENCE_TRANSITION_ENTER:
+                return resources.getString(R.string.geo_transition_entered);
+            case Geofence.GEOFENCE_TRANSITION_EXIT:
+                return resources.getString(R.string.geo_transition_existed);
+            case Geofence.GEOFENCE_TRANSITION_DWELL:
+                return resources.getString(R.string.geo_fence_dwell);
+            default:
+                return resources.getString(R.string.geo_transition_default);
+        }
+    }
+
+    /**
+     * Get a String representing a transition type
+     *
+     * @param mContext Context
+     * @param transitionType  Transition Type
+     * @param triggeringGeoFences List<GeoFences>
+     * @return Detail string
+     */
+    public static String getTransitionDetails(Context mContext,int transitionType, List<Geofence> triggeringGeoFences)
+    {
+        String geoTransitionStr = getTransitionString(mContext,transitionType);
+
+        //Get the Ids of each triggered GeoFence
+        ArrayList triggeringGeoFenceIdsList = new ArrayList();
+        for (Geofence geofence : triggeringGeoFences)
+        {
+            triggeringGeoFenceIdsList.add(geofence.getRequestId());
+        }
+
+        String triggeringGeoFenceIdsStr = TextUtils.join(", ",triggeringGeoFenceIdsList);
+
+        return geoTransitionStr + ": " + triggeringGeoFenceIdsStr;
+
+
 
     }
 }

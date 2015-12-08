@@ -4,7 +4,10 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.util.Log;
 
+import com.google.android.gms.location.Geofence;
 import com.google.android.gms.location.GeofencingEvent;
+
+import java.util.List;
 
 import johnkagga.me.location.helper;
 
@@ -39,6 +42,17 @@ public class GeoFenceTransitionIntentService extends IntentService {
 
         //Get the Geo transition constant
         int transitionType = geofencingEvent.getGeofenceTransition();
+
+        if (transitionType == Geofence.GEOFENCE_TRANSITION_ENTER
+                || transitionType == Geofence.GEOFENCE_TRANSITION_EXIT)
+        {
+            //List of geo fences that might have been triggered
+            List<Geofence> triggeringGeoFences = geofencingEvent.getTriggeringGeofences();
+
+            //GeoFence transition string
+            String geoFenceTransitionDetails = helper.getTransitionDetails(this,
+                    transitionType,triggeringGeoFences);
+        }
 
     }
 }
